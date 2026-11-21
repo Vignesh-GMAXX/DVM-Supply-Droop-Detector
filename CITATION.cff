@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you refer to this work, please cite it as below."
+title: "Supply-Droop Detection With an All-Digital Dynamic Variation Monitor and Corner-Calibrated Thresholds"
+type: report
+authors:
+  - family-names: Patel
+    given-names: Krish Badal
+    affiliation: "Indian Institute of Science, Bengaluru"
+  - family-names: Govindu
+    given-names: Vignesh
+    affiliation: "Indian Institute of Science, Bengaluru"
+date-released: 2026-11-21
+keywords:
+  - dynamic variation monitor
+  - supply voltage droop
+  - time-to-digital converter
+  - tunable replica circuit
+  - calibration

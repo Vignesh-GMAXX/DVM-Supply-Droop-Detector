@@ -1,0 +1,8 @@
+* text=auto eol=lf
+*.pdf  binary
+*.png  binary
+*.npz  binary
+*.gz   binary
+*.drawio linguist-language=XML
+*.va   linguist-language=Verilog
+report/latex/** linguist-documentation
