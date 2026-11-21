@@ -1,0 +1,79 @@
+`include "constants.vams"
+`include "disciplines.vams"
+
+// VDD_droop_matrix (v2): 48 smooth Gaussian droops in one run, covering a
+// depth x width matrix:
+//   depth : 2.5, 5, 6.25, 7.5, 10, 11.25, 12.5, 15 %   (of vnom)
+//   width : FWHM 1, 2, 4, 8, 12, 16 ns                  (one block each)
+// Order: all 8 depths at 1 ns, then all 8 at 2 ns, ... then 16 ns.
+// Depths avoid the one-code band (12.5 mV) just below each threshold.
+//
+// Event:  d(t) = a * exp(-(t-c)^2 / (2 s^2)),  s = FWHM / 2.3548
+// Each event spans c-3s .. c+3s; the next starts gap later.
+// Stop time: nw = 6 -> 1275 ns ; nw = 5 (no 16 ns block) -> 885 ns.
+
+module VDD_droop_matrix(vout);
+  output vout;
+  electrical vout;
+
+  parameter real    vnom  = 1.0;
+  parameter real    t0    = 10n;   // start of the first event
+  parameter real    gap   = 8n;    // gap between events
+  parameter integer nw    = 6;     // number of width blocks used (1..6)
+  parameter real    hstep = 20p;   // max time step while a droop is present
+
+  real t, d, s, c, tc, x;
+  integer i, j, active;
+
+  analog function real dep;        // depth of row j
+    input j;
+    integer j;
+    begin
+      case (j)
+        0: dep = 0.025;
+        1: dep = 0.05;
+        2: dep = 0.0625;
+        3: dep = 0.075;
+        4: dep = 0.10;
+        5: dep = 0.1125;
+        6: dep = 0.125;
+        default: dep = 0.15;
+      endcase
+    end
+  endfunction
+
+  analog function real fw;         // FWHM of block i
+    input i;
+    integer i;
+    begin
+      case (i)
+        0: fw = 1n;
+        1: fw = 2n;
+        2: fw = 4n;
+        3: fw = 8n;
+        4: fw = 12n;
+        default: fw = 16n;
+      endcase
+    end
+  endfunction
+
+  analog begin
+    t = $abstime;
+    d = 0.0;
+    active = 0;
+    tc = t0;
+    for (i = 0; i < nw; i = i + 1) begin
+      s = fw(i)/2.3548;
+      for (j = 0; j < 8; j = j + 1) begin
+        c = tc + 3.0*s;
+        x = (t - c)/s;
+        if (abs(x) < 4.0) d = d + dep(j)*exp(-0.5*x*x);
+        if (abs(x) < 3.0) active = 1;
+        tc = c + 3.0*s + gap;
+      end
+    end
+    if (active > 0) $bound_step(hstep);
+
+    V(vout) <+ vnom - d;
+  end
+endmodule

@@ -1,0 +1,80 @@
+`include "constants.vams"
+`include "disciplines.vams"
+
+// VDD_droop_train (v3): six smooth supply droops of different depth and shape
+// in one run. Each droop is a rounded "U": smooth fall, rounded bottom, smooth
+// recovery (no corners, no flat lines). The bottom stays at or below the
+// nominal depth for >= 4.5 ns (about two DVM samples), so the DVM can measure
+// the full depth whatever the clock phase.
+//
+// Event i:  d_i(t) = pk * a_i * exp( -0.5 * |(t - c_i)/w|^3 ),
+//           w = wf_i before the centre (fall side), w = wr_i after (recovery side)
+//   a_i : nominal depth in V (0.10 = 10% of 1.0 V); peak = pk*a_i (pk = 1.08)
+//   c_i : time of the deepest point
+//   time at/below nominal depth = 0.536*(wf_i + wr_i)
+//
+// Default events (stop time 178 ns):
+//   E1 c= 18.8 ns  5%  symmetric      (wf 4.2, wr 4.2)  held 4.5 ns  window  10- 32 ns
+//   E2 c= 41.9 ns 10%  fast fall      (wf 2.9, wr 5.5)  held 4.5 ns  window  32- 57 ns
+//   E3 c= 73.2 ns 10%  slow, wide     (wf 5.6, wr 5.6)  held 6.0 ns  window  57- 89 ns
+//   E4 c= 98.3 ns 15%  fast fall      (wf 2.5, wr 5.9)  held 4.5 ns  window  89-115 ns
+//   E5 c=128.5 ns 15%  symmetric      (wf 4.7, wr 4.7)  held 5.0 ns  window 115-142 ns
+//   E6 c=160.1 ns  5%  slow, wide     (wf 6.5, wr 6.5)  held 7.0 ns  window 142-178 ns
+
+module VDD_droop_train(vout);
+  output vout;
+  electrical vout;
+
+  parameter real vnom = 1.0;
+  parameter real pk   = 1.08;   // peak depth / nominal depth
+
+  parameter real c1 = 18.8n;  parameter real a1 = 0.05; parameter real wf1 = 4.2n; parameter real wr1 = 4.2n;
+  parameter real c2 = 41.9n;  parameter real a2 = 0.10; parameter real wf2 = 2.9n; parameter real wr2 = 5.5n;
+  parameter real c3 = 73.2n;  parameter real a3 = 0.10; parameter real wf3 = 5.6n; parameter real wr3 = 5.6n;
+  parameter real c4 = 98.3n;  parameter real a4 = 0.15; parameter real wf4 = 2.5n; parameter real wr4 = 5.9n;
+  parameter real c5 = 128.5n; parameter real a5 = 0.15; parameter real wf5 = 4.7n; parameter real wr5 = 4.7n;
+  parameter real c6 = 160.1n; parameter real a6 = 0.05; parameter real wf6 = 6.5n; parameter real wr6 = 6.5n;
+
+  parameter real hstep = 20p;   // max time step while a droop is present
+
+  real t, d;
+  integer active;
+
+  // rounded dip (0..1)
+  analog function real ushape;
+    input tt, c, wf, wr;
+    real tt, c, wf, wr, x;
+    begin
+      x = (tt < c) ? (c - tt)/wf : (tt - c)/wr;
+      if (x > 4.0) ushape = 0.0;
+      else         ushape = exp(-0.5*x*x*x);
+    end
+  endfunction
+
+  // 1 while the event is non-negligible
+  analog function integer near;
+    input tt, c, wf, wr;
+    real tt, c, wf, wr;
+    begin
+      near = (tt > c - 2.5*wf && tt < c + 2.5*wr) ? 1 : 0;
+    end
+  endfunction
+
+  analog begin
+    t = $abstime;
+
+    // breakpoints at the start of each event so the step size tightens in time
+    @(timer(c1 - 2.5*wf1) or timer(c2 - 2.5*wf2) or timer(c3 - 2.5*wf3) or
+      timer(c4 - 2.5*wf4) or timer(c5 - 2.5*wf5) or timer(c6 - 2.5*wf6)) ;
+
+    d = pk*( a1*ushape(t, c1, wf1, wr1) + a2*ushape(t, c2, wf2, wr2)
+           + a3*ushape(t, c3, wf3, wr3) + a4*ushape(t, c4, wf4, wr4)
+           + a5*ushape(t, c5, wf5, wr5) + a6*ushape(t, c6, wf6, wr6) );
+
+    active = near(t, c1, wf1, wr1) + near(t, c2, wf2, wr2) + near(t, c3, wf3, wr3)
+           + near(t, c4, wf4, wr4) + near(t, c5, wf5, wr5) + near(t, c6, wf6, wr6);
+    if (active > 0) $bound_step(hstep);
+
+    V(vout) <+ vnom - d;
+  end
+endmodule

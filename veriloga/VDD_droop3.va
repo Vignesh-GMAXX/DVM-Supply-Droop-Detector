@@ -1,0 +1,63 @@
+`include "constants.vams"
+`include "disciplines.vams"
+
+// VDD_droop3 : smooth supply droop source (no ringing, no abrupt edges)
+//
+// mode 0 : raised-cosine fall over tdown, flat bottom for twidth,
+//          raised-cosine recovery over tup.
+//          (set twidth = 0 for a smooth V-shaped dip)
+// mode 1 : RC-like droop. Exponential fall (time constant tauf) while the
+//          load step lasts (twidth), then exponential recovery (taur).
+//          Actual depth = vdroop*(1-exp(-twidth/tauf)), ~vdroop if twidth >> tauf.
+//
+// vdroop is the droop depth in volts (0.1 = 100 mV = 10% of 1 V).
+
+module VDD_droop3(vout);
+  output vout;
+  electrical vout;
+
+  parameter real    vnom   = 1.0;
+  parameter real    vdroop = 0.1  from [0:inf);
+  parameter integer mode   = 0    from [0:1];
+  parameter real    tdelay = 9.9n from [0:inf);
+  parameter real    tdown  = 2n   from (0:inf);
+  parameter real    twidth = 10n  from [0:inf);
+  parameter real    tup    = 5n   from (0:inf);
+  parameter real    tauf   = 1n   from (0:inf);
+  parameter real    taur   = 3n   from (0:inf);
+
+  real t, x, xr, t1, t2, t3, tend, hstep;
+
+  analog begin
+    t  = $abstime;
+    t1 = tdelay + tdown;      // bottom reached          (mode 0)
+    t2 = t1 + twidth;         // recovery starts         (mode 0)
+    t3 = t2 + tup;            // back at vnom            (mode 0)
+
+    // put simulation time points exactly on the segment edges
+    @(timer(tdelay) or timer(t1) or timer(t2) or timer(t3) or timer(tdelay + twidth)) ;
+
+    x = 0.0;
+    if (mode == 0) begin
+      if (t <= tdelay)      x = 0.0;
+      else if (t < t1)      x = 0.5*(1.0 - cos(`M_PI*(t - tdelay)/tdown));
+      else if (t < t2)      x = 1.0;
+      else if (t < t3)      x = 0.5*(1.0 + cos(`M_PI*(t - t2)/tup));
+      else                  x = 0.0;
+      tend  = t3;
+      hstep = min(tdown, tup)/20.0;
+    end else begin
+      xr = 1.0 - exp(-twidth/tauf);          // depth fraction reached when the load ends
+      if (t <= tdelay)                  x = 0.0;
+      else if (t < tdelay + twidth)     x = 1.0 - exp(-(t - tdelay)/tauf);
+      else                              x = xr*exp(-(t - tdelay - twidth)/taur);
+      tend  = tdelay + twidth + 5.0*taur;
+      hstep = min(tauf, taur)/20.0;
+    end
+
+    // small time steps only while the droop is happening
+    if (t >= tdelay && t <= tend) $bound_step(hstep);
+
+    V(vout) <+ vnom - vdroop*x;
+  end
+endmodule
