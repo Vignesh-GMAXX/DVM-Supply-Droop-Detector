@@ -12,6 +12,8 @@ bash scripts/reproduce_figures.sh /tmp/out  # or any output folder
 
 [`reproduce_figures.sh`](reproduce_figures.sh) stages the inputs in the output folder (decompressing the `.csv.gz` files once), puts `scripts/` on `PYTHONPATH` and runs every script there. The regenerated report figures render identically to the PDFs in [`report/latex/`](../report/latex).
 
+The same run, plus [`check_links.py`](check_links.py), executes on every push in GitHub Actions ([workflow](../.github/workflows/reproduce-figures.yml)); the figures are attached to each run as an artifact.
+
 ## Figure scripts
 
 | Script | Figure | Inputs (from `data/`) | What it shows |
@@ -38,6 +40,7 @@ Every script writes a `.png` and a `.pdf` into the current directory. Several al
 | [`adexl_table.py`](adexl_table.py) | parses ADE XL corner-table exports (one column per corner, one block per sweep point) into `meta[corner]` (`S`, `T`, model section, temperature) and `data[vdroop][output][corner]` |
 | [`wload.py`](wload.py) | loads ADE waveform exports (X/Y column pairs) into numpy arrays, keyed by signal, corner, droop and temperature |
 | [`make_train.py`](make_train.py) | plotting helpers for the droop trains, used by `make_train4.py` (on its own it draws the first, Gaussian version of the train figure, whose data is not included) |
+| [`check_links.py`](check_links.py) | checks every relative link, image and `#anchor` in the repository's markdown files (GitHub heading rules); exits with status 1 if anything is broken |
 | [`prep/extract_tt27_clocks.py`](prep/extract_tt27_clocks.py) | one-off: cuts the clock-path waveforms out of the raw 54-MB waveform export into `data/ade_xl/tt27_clocks.npz` |
 
 ## Conventions

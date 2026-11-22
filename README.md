@@ -6,6 +6,7 @@
 ![verification](https://img.shields.io/badge/verified-post--layout%20%28RC%20extracted%29-2ea043)
 ![tools](https://img.shields.io/badge/tools-Virtuoso%20%C2%B7%20Spectre%20%C2%B7%20Assura-8250df)
 ![license](https://img.shields.io/badge/code%20license-MIT-lightgrey)
+[![figures](https://github.com/Vignesh-GMAXX/DVM-Supply-Droop-Detector/actions/workflows/reproduce-figures.yml/badge.svg)](https://github.com/Vignesh-GMAXX/DVM-Supply-Droop-Detector/actions/workflows/reproduce-figures.yml)
 
 IISc Bengaluru · Digital VLSI Design (DVLSI) 2026 · Group P1G11 · **Patel Krish Badal, Govindu Vignesh**
 
@@ -138,6 +139,7 @@ All figures of merit, the 15-corner table, Monte Carlo statistics and a comparis
 ├── veriloga/                  supply-droop sources (test bench only)
 ├── scripts/                   figure scripts, data parsers, reproduce_figures.sh
 ├── data/                      exported simulation results used by the scripts
+├── .github/workflows/         CI: regenerates every figure and checks the links on each push
 ├── CITATION.cff               citation metadata
 └── LICENSE                    MIT (code)
 ```
@@ -153,7 +155,7 @@ pip install -r scripts/requirements.txt   # numpy, pandas, matplotlib
 bash scripts/reproduce_figures.sh         # → build/figures/fig_*.png and .pdf (about 30 s)
 ```
 
-The regenerated report figures render identically to those in the report. What each script draws and reads: [`scripts/README.md`](scripts/README.md); what each data file holds: [`data/README.md`](data/README.md).
+The regenerated report figures render identically to those in the report, and GitHub Actions repeats the whole run on every push. What each script draws and reads: [`scripts/README.md`](scripts/README.md); what each data file holds: [`data/README.md`](data/README.md).
 
 ## Reproducing the simulations
 

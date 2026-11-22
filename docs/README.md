@@ -45,6 +45,6 @@ Eleven chapters, from "what is a supply droop" to "how do I rerun every simulati
 | `fig_corner_timing.png` | stage, replica and clock-path delays per corner; eq. 1 check | [7.2](07-pvt-and-calibration.md#what-sets-the-code-at-each-corner) | [`make_corner_timing.py`](../scripts/make_corner_timing.py) |
 | `fig_corner_codes.png` | code vs. droop at all 15 corners with both sets of thresholds | [7.3](07-pvt-and-calibration.md#73-code-under-droop-at-every-corner) | [`make_corner_codes.py`](../scripts/make_corner_codes.py) |
 | `fig_mc.png` | Monte Carlo distributions | [8](08-monte-carlo.md#82-results) | [`make_mc.py`](../scripts/make_mc.py) |
-| `hierarchy.png` | design hierarchy | [3.2](03-circuits-and-cells.md#32-leaf-cells) | drawn in draw.io ([`diagrams/`](../diagrams)) |
+| `hierarchy.png` | design hierarchy | [3.2](03-circuits-and-cells.md#32-leaf-cells) | [`diagrams/generator/big.py`](../diagrams/generator/big.py) (editable draw.io in [`diagrams/`](../diagrams)) |
 
 Cadence schematic screenshots are in [`images/schematics/`](images/schematics), layout screenshots in [`images/layout/`](images/layout).

@@ -10,6 +10,12 @@ authors:
     given-names: Vignesh
     affiliation: "Indian Institute of Science, Bengaluru"
 date-released: 2026-11-21
+repository-code: "https://github.com/Vignesh-GMAXX/DVM-Supply-Droop-Detector"
+abstract: >-
+  Transistor-level, post-layout implementation of the all-digital dynamic
+  variation monitor (DVM) of Bowman et al. in a generic 45-nm process
+  (gpdk045), with TAP_CAL, a per-die tap-calibration block that removes all
+  no-droop false alarms across 15 process-temperature corners.
 keywords:
   - dynamic variation monitor
   - supply voltage droop
