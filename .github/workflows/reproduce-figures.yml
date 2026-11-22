@@ -1,0 +1,36 @@
+name: Reproduce figures
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  figures:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Regenerate every data figure from data/
+        run: bash scripts/reproduce_figures.sh build/figures
+
+      - name: Check links and anchors in the documentation
+        run: python3 scripts/check_links.py
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: figures
+          path: |
+            build/figures/fig_*.png
+            build/figures/fig_*.pdf
