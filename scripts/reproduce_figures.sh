@@ -5,6 +5,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 OUT="${1:-$ROOT/build/figures}"
 mkdir -p "$OUT"
+OUT="$(cd "$OUT" && pwd)"
 cd "$OUT"
 export MPLBACKEND=Agg
 
