@@ -1,0 +1,102 @@
+,,Parameter,,,,,,K1_0,K1_1,K1_2,C3,C4_0,C4_1,C4_2,C5,C6,C7,C8_0,C8_1,C8_2,C9,C10
+,,S0,,,,,,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1
+,,S1,,,,,,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1
+,,T0,,,,,,0,0,0,0,1,1,1,0,1,0,0,0,0,0,0
+,,T1,,,,,,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0
+,,gpdk045.scs,,,,,,tt,fs,sf,ss,tt,fs,sf,ff,ff,ff,tt,fs,sf,ss,ss
+,,temperature,,,,,,27,27,27,-40,-40,-40,-40,27,-40,125,125,125,125,27,125
+
+Point,Test,Output,Spec,Weight,Pass/Fail,Min,Max,K1_0,K1_1,K1_2,C3,C4_0,C4_1,C4_2,C5,C6,C7,C8_0,C8_1,C8_2,C9,C10
+Parameters: vdroop=100m,,,,,,,,,,,,,,,,,,,,,,
+1,Project:DVM_test:1,/V0/PLUS,,,,,,,,,,,,,,,,,,,,
+1,Project:DVM_test:1,t_clk2div,,,,123.7e-12,333.6e-12,192.6e-12,198.7e-12,194.1e-12,200.1e-12,153.7e-12,158.5e-12,154.3e-12,157e-12,123.7e-12,217.9e-12,263.6e-12,271.2e-12,266.7e-12,248.6e-12,333.6e-12
+1,Project:DVM_test:1,t_buf,,,,80.34e-12,202.5e-12,124e-12,124.6e-12,126.2e-12,127.6e-12,99.91e-12,100.5e-12,101.4e-12,101.4e-12,80.34e-12,137.7e-12,164.6e-12,165.1e-12,168.3e-12,155.5e-12,202.5e-12
+1,Project:DVM_test:1,tr_clkdiv_b,,,,45.62e-12,96.34e-12,63.58e-12,69.09e-12,60.23e-12,57.4e-12,50.61e-12,55.08e-12,47.56e-12,57.63e-12,45.62e-12,79.81e-12,86.71e-12,93.58e-12,83.05e-12,71.54e-12,96.34e-12
+1,Project:DVM_test:1,t_TRC,,,,317.1e-12,591.1e-12,325.6e-12,317.1e-12,344.8e-12,336.7e-12,571.9e-12,568.4e-12,591.1e-12,491.3e-12,462.3e-12,367.7e-12,451.3e-12,438.6e-12,478.3e-12,426.6e-12,579.6e-12
+1,Project:DVM_test:1,P_active,,,,153.8e-6,164.6e-6,158.6e-6,158.8e-6,159.6e-6,153.8e-6,160e-6,159.3e-6,162.7e-6,161.3e-6,158.2e-6,164.6e-6,158.8e-6,159.3e-6,158.5e-6,154.6e-6,154.5e-6
+1,Project:DVM_test:1,E_sample,,,,384.6e-15,411.6e-15,396.5e-15,397.1e-15,398.9e-15,384.6e-15,400e-15,398.2e-15,406.8e-15,403.3e-15,395.5e-15,411.6e-15,397e-15,398.3e-15,396.4e-15,386.6e-15,386.4e-15
+1,Project:DVM_test:1,t_stage_post,,,,30.02e-12,81.28e-12,47.39e-12,48.36e-12,47.63e-12,46.96e-12,36.9e-12,37.65e-12,37.02e-12,39.04e-12,30.02e-12,55.27e-12,65.86e-12,67.07e-12,66.4e-12,59.49e-12,81.28e-12
+1,Project:DVM_test:1,latency0,,,,1.763e-9,16.9e-9,4.313e-9,4.32e-9,1.818e-9,1.851e-9,1.763e-9,1.769e-9,1.767e-9,4.254e-9,eval err,eval err,eval err,eval err,eval err,eval err,16.9e-9
+1,Project:DVM_test:1,latency1,,,,2.011e-9,4.351e-9,4.313e-9,4.32e-9,4.318e-9,4.351e-9,4.263e-9,4.269e-9,4.267e-9,4.254e-9,eval err,4.323e-9,eval err,eval err,eval err,2.011e-9,eval err
+1,Project:DVM_test:1,latency2,,,,4.419e-9,14.36e-9,eval err,eval err,eval err,eval err,eval err,eval err,eval err,eval err,eval err,eval err,4.427e-9,4.419e-9,14.36e-9,14.35e-9,eval err
+1,Project:DVM_test:1,t_clear0,,,,16.18e-9,29.55e-9,27.09e-9,27.09e-9,27.09e-9,27.1e-9,27.04e-9,27.05e-9,29.55e-9,27.05e-9,eval err,eval err,eval err,eval err,eval err,eval err,16.18e-9
+1,Project:DVM_test:1,dflag0,< 0.5,,fail,3.257e-3,1.032,1.022,1.02,1.022,1.032,1.027,1.026,1.028,1.016,3.257e-3,1.004,1.004,1.004,1.003,1.003,1.003
+1,Project:DVM_test:1,dflag1,< 0.5,,fail,3.152e-3,1.032,978.1e-3,976.5e-3,980.1e-3,1.032,1.027,1.026,1.028,971.3e-3,3.152e-3,1.013,1.004,1.004,1.003,1.026,1.003
+1,Project:DVM_test:1,dflag2,< 0.5,,fail,2.344e-3,1.026,2.441e-3,2.349e-3,2.557e-3,2.344e-3,2.681e-3,2.637e-3,2.732e-3,2.714e-3,2.935e-3,2.486e-3,1.017,1.016,1.017,1.026,1.003
+1,Project:DVM_test:1,cflag0,,,,1.602e-3,1.068,1.047,1.043,1.049,1.068,1.059,1.057,1.062,1.036,11.07e-3,1.028,1.036,1.033,1.038,1.055,1.602e-3
+1,Project:DVM_test:1,cflag1,,,,1.602e-3,1.068,1.019,1.015,1.021,1.068,1.059,1.057,1.062,1.008,1.779e-3,999.4e-3,1.036,1.033,1.038,1.055,1.602e-3
+1,Project:DVM_test:1,cflag2,,,,1.602e-3,1.028,9.505e-3,5.616e-3,16.6e-3,6.286e-3,8.873e-3,4.802e-3,15.26e-3,14.79e-3,1.779e-3,18.51e-3,1.009,1.006,1.011,1.028,1.602e-3
+1,Project:DVM_test:1,code_nom,,,,9.003,28,20,20,20,20,18,18,18,20,28,16,12,12,12,14,9.003
+1,Project:DVM_test:1,code_droop,,,,10,18.56,12,12,12,10.01,10,10,10,12,18,11.01,12,12,13,11,18.56
+1,Project:DVM_test:1,clat0,,,,2.267e-9,4.824e-9,4.787e-9,4.788e-9,2.291e-9,2.297e-9,2.267e-9,2.268e-9,2.27e-9,4.766e-9,eval err,2.295e-9,2.322e-9,2.323e-9,2.327e-9,4.824e-9,eval err
+1,Project:DVM_test:1,P_pre,,,,184.7e-6,208.3e-6,192e-6,192.6e-6,191.7e-6,186e-6,185.8e-6,185.9e-6,184.7e-6,194.8e-6,208.3e-6,193.1e-6,198.4e-6,199.5e-6,200e-6,188.5e-6,191.5e-6
+Parameters: vdroop=150m,,,,,,,,,,,,,,,,,,,,,,
+2,Project:DVM_test:1,/V0/PLUS,,,,,,,,,,,,,,,,,,,,
+2,Project:DVM_test:1,t_clk2div,,,,123.7e-12,333.6e-12,192.6e-12,198.7e-12,194.1e-12,200.1e-12,153.7e-12,158.5e-12,154.3e-12,157e-12,123.7e-12,217.9e-12,263.6e-12,271.2e-12,266.7e-12,248.6e-12,333.6e-12
+2,Project:DVM_test:1,t_buf,,,,80.34e-12,202.5e-12,124e-12,124.6e-12,126.2e-12,127.6e-12,99.91e-12,100.5e-12,101.4e-12,101.4e-12,80.34e-12,137.7e-12,164.6e-12,165.1e-12,168.3e-12,155.5e-12,202.5e-12
+2,Project:DVM_test:1,tr_clkdiv_b,,,,45.62e-12,96.34e-12,63.58e-12,69.09e-12,60.23e-12,57.4e-12,50.61e-12,55.08e-12,47.56e-12,57.63e-12,45.62e-12,79.81e-12,86.71e-12,93.58e-12,83.05e-12,71.54e-12,96.34e-12
+2,Project:DVM_test:1,t_TRC,,,,317.1e-12,591.1e-12,325.6e-12,317.1e-12,344.8e-12,336.7e-12,571.9e-12,568.4e-12,591.1e-12,491.3e-12,462.3e-12,367.7e-12,451.3e-12,438.6e-12,478.3e-12,426.6e-12,579.6e-12
+2,Project:DVM_test:1,P_active,,,,115.4e-6,148.3e-6,144.1e-6,143.8e-6,144.6e-6,138.7e-6,144.4e-6,142.7e-6,143.3e-6,148.3e-6,145.4e-6,148e-6,140e-6,139.7e-6,143.9e-6,140e-6,115.4e-6
+2,Project:DVM_test:1,E_sample,,,,288.4e-15,370.7e-15,360.3e-15,359.5e-15,361.6e-15,346.7e-15,361e-15,356.8e-15,358.1e-15,370.7e-15,363.4e-15,370.1e-15,349.9e-15,349.3e-15,359.9e-15,350e-15,288.4e-15
+2,Project:DVM_test:1,t_stage_post,,,,30.02e-12,81.28e-12,47.39e-12,48.36e-12,47.63e-12,46.96e-12,36.9e-12,37.65e-12,37.02e-12,39.04e-12,30.02e-12,55.27e-12,65.86e-12,67.07e-12,66.4e-12,59.49e-12,81.28e-12
+2,Project:DVM_test:1,latency0,,,,1.862e-9,16.88e-9,1.944e-9,1.955e-9,1.954e-9,14.39e-9,1.884e-9,1.895e-9,1.89e-9,1.862e-9,4.316e-9,eval err,eval err,eval err,eval err,16.88e-9,9.728e-9
+2,Project:DVM_test:1,latency1,,,,4.316e-9,14.47e-9,4.445e-9,4.456e-9,4.465e-9,14.39e-9,4.385e-9,4.395e-9,4.39e-9,4.363e-9,4.316e-9,4.444e-9,eval err,eval err,eval err,14.47e-9,9.728e-9
+2,Project:DVM_test:1,latency2,,,,4.363e-9,14.57e-9,4.445e-9,4.456e-9,4.466e-9,14.39e-9,4.385e-9,4.395e-9,4.391e-9,4.363e-9,eval err,4.444e-9,14.45e-9,14.45e-9,14.57e-9,14.47e-9,9.729e-9
+2,Project:DVM_test:1,t_clear0,,,,16.18e-9,29.55e-9,27.09e-9,27.09e-9,27.09e-9,27.1e-9,29.54e-9,29.55e-9,29.55e-9,27.05e-9,27.01e-9,eval err,eval err,eval err,eval err,16.18e-9,16.31e-9
+2,Project:DVM_test:1,dflag0,< 0.5,,fail,1.003,1.032,1.022,1.02,1.022,1.032,1.027,1.026,1.028,1.016,1.02,1.004,1.004,1.004,1.003,1.003,1.003
+2,Project:DVM_test:1,dflag1,< 0.5,,fail,952.6e-3,1.032,1.022,1.02,1.022,1.032,1.027,1.026,1.028,1.016,952.6e-3,1.013,1.004,1.004,1.003,1.026,1.003
+2,Project:DVM_test:1,dflag2,< 0.5,,fail,2.964e-3,1.032,956.8e-3,955.3e-3,960.5e-3,1.032,1.027,1.025,1.028,949.1e-3,2.964e-3,1.013,1.017,1.016,1.016,1.026,1.003
+2,Project:DVM_test:1,cflag0,,,,1.601e-3,1.068,1.047,1.043,1.048,1.068,1.059,1.056,1.062,1.036,1.046,1.028,1.036,1.033,1.038,1.055,1.601e-3
+2,Project:DVM_test:1,cflag1,,,,1.601e-3,1.068,1.047,1.043,1.048,1.068,1.059,1.057,1.062,1.036,1.004,1.028,1.036,1.033,1.038,1.055,1.601e-3
+2,Project:DVM_test:1,cflag2,,,,1.601e-3,1.068,1.005,1.001,1.007,1.068,1.059,1.057,1.062,993.6e-3,7.894e-3,1.028,1.036,1.033,1.038,1.055,1.601e-3
+2,Project:DVM_test:1,code_nom,,,,9.002,28,20,20,20,20,18,18,18,20,28,16,12,12,12,14,9.002
+2,Project:DVM_test:1,code_droop,,,,7.003,19,9.004,9.003,10,13,8.003,7.003,11.01,8.002,12,10,17,17,17,19,8.926
+2,Project:DVM_test:1,clat0,,,,2.353e-9,4.834e-9,2.381e-9,2.383e-9,2.386e-9,2.403e-9,2.357e-9,2.36e-9,2.361e-9,2.353e-9,4.834e-9,2.386e-9,2.421e-9,2.424e-9,2.427e-9,2.433e-9,eval err
+2,Project:DVM_test:1,P_pre,,,,184.7e-6,208.3e-6,192e-6,192.6e-6,191.7e-6,186e-6,185.8e-6,185.9e-6,184.7e-6,194.8e-6,208.3e-6,193.1e-6,198.4e-6,199.5e-6,200e-6,188.5e-6,191.5e-6
+Parameters: vdroop=0,,,,,,,,,,,,,,,,,,,,,,
+3,Project:DVM_test:1,/V0/PLUS,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+3,Project:DVM_test:1,t_clk2div,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+3,Project:DVM_test:1,t_buf,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+3,Project:DVM_test:1,tr_clkdiv_b,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+3,Project:DVM_test:1,t_TRC,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+3,Project:DVM_test:1,P_active,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+3,Project:DVM_test:1,E_sample,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+3,Project:DVM_test:1,t_stage_post,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+3,Project:DVM_test:1,latency0,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+3,Project:DVM_test:1,latency1,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+3,Project:DVM_test:1,latency2,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+3,Project:DVM_test:1,t_clear0,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+3,Project:DVM_test:1,dflag0,< 0.5,,fail,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+3,Project:DVM_test:1,dflag1,< 0.5,,fail,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+3,Project:DVM_test:1,dflag2,< 0.5,,fail,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+3,Project:DVM_test:1,cflag0,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+3,Project:DVM_test:1,cflag1,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+3,Project:DVM_test:1,cflag2,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+3,Project:DVM_test:1,code_nom,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+3,Project:DVM_test:1,code_droop,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+3,Project:DVM_test:1,clat0,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+3,Project:DVM_test:1,P_pre,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+Parameters: vdroop=50m,,,,,,,,,,,,,,,,,,,,,,
+4,Project:DVM_test:1,/V0/PLUS,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+4,Project:DVM_test:1,t_clk2div,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+4,Project:DVM_test:1,t_buf,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+4,Project:DVM_test:1,tr_clkdiv_b,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+4,Project:DVM_test:1,t_TRC,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+4,Project:DVM_test:1,P_active,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+4,Project:DVM_test:1,E_sample,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+4,Project:DVM_test:1,t_stage_post,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+4,Project:DVM_test:1,latency0,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+4,Project:DVM_test:1,latency1,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+4,Project:DVM_test:1,latency2,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+4,Project:DVM_test:1,t_clear0,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+4,Project:DVM_test:1,dflag0,< 0.5,,fail,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+4,Project:DVM_test:1,dflag1,< 0.5,,fail,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+4,Project:DVM_test:1,dflag2,< 0.5,,fail,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+4,Project:DVM_test:1,cflag0,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+4,Project:DVM_test:1,cflag1,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+4,Project:DVM_test:1,cflag2,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+4,Project:DVM_test:1,code_nom,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+4,Project:DVM_test:1,code_droop,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+4,Project:DVM_test:1,clat0,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+4,Project:DVM_test:1,P_pre,,,,,,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled,canceled
+
